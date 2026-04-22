@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* === ATELIER Design System === */
+@theme {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-headline: 'Noto Serif', serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-label: 'Manrope', sans-serif;
+
+    --color-primary: #5f5e5e;
+    --color-primary-dim: #535252;
+    --color-primary-container: #e5e2e1;
+    --color-on-primary: #faf7f6;
+    --color-on-primary-container: #525151;
+
+    --color-secondary: #675e4c;
+    --color-secondary-dim: #5b5241;
+    --color-secondary-container: #efe1ca;
+    --color-secondary-fixed: #efe1ca;
+    --color-on-secondary: #fff8f0;
+    --color-on-secondary-container: #5a513f;
+    --color-on-secondary-fixed-variant: #645a49;
+
+    --color-tertiary: #5f5f5f;
+    --color-tertiary-dim: #535353;
+    --color-tertiary-container: #f5f3f3;
+
+    --color-surface: #faf9f6;
+    --color-surface-dim: #d6dbd5;
+    --color-surface-bright: #faf9f6;
+    --color-surface-container: #edeeea;
+    --color-surface-container-low: #f4f4f0;
+    --color-surface-container-high: #e6e9e4;
+    --color-surface-container-highest: #e0e4de;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-variant: #e0e4de;
+
+    --color-background: #faf9f6;
+    --color-on-background: #2f3430;
+    --color-on-surface: #2f3430;
+    --color-on-surface-variant: #5c605c;
+
+    --color-outline: #777c77;
+    --color-outline-variant: #afb3ae;
+
+    --color-error: #9f403d;
+    --color-error-container: #fe8983;
+    --color-on-error: #fff7f6;
+
+    --color-inverse-surface: #0d0f0d;
+    --color-inverse-on-surface: #9d9d9a;
+    --color-inverse-primary: #ffffff;
+}
+
+/* === Base Styles === */
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Editorial Shadow */
+.editorial-shadow {
+    box-shadow: 0 30px 60px -12px rgba(47, 52, 48, 0.06);
+}
+
+/* Glass Effect */
+.glass {
+    background: rgba(250, 249, 246, 0.8);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+main { animation: fadeIn 0.5s ease-out 0.1s both; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-outline-variant); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+/* Mobile Menu */
+.mobile-menu-overlay {
+    position: fixed; inset: 0;
+    background: rgba(250, 249, 246, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.mobile-menu-overlay.active {
+    opacity: 1; pointer-events: all;
+}
+
+/* Toast */
+.toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: #2f3430; color: #faf7f6;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-label); font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    z-index: 200; transform: translateY(120%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast.show { transform: translateY(0); }
