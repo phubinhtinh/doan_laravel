@@ -50,7 +50,8 @@ class CheckoutController extends Controller
         $tax = round($subtotal * 0.08, 2);
         $total = $subtotal + $shipping + $tax;
 
-        DB::transaction(function () use ($validated, $cartItems, $subtotal, $shipping, $tax, $total, $request) {
+        $orderId = null;
+        DB::transaction(function () use ($validated, $cartItems, $subtotal, $shipping, $tax, $total, $request, &$orderId) {
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'name' => $validated['name'],
@@ -66,6 +67,7 @@ class CheckoutController extends Controller
                 'total' => $total,
                 'status' => 'pending',
             ]);
+            $orderId = $order->id;
 
             foreach ($cartItems as $item) {
                 OrderItem::create([
@@ -83,7 +85,23 @@ class CheckoutController extends Controller
             $this->clearCart($request);
         });
 
-        return redirect()->route('home')->with('success', 'Đặt hàng thành công! Cảm ơn bạn đã mua sắm tại ATELIER.');
+        $request->session()->put('last_order_id', $orderId);
+        return redirect()->route('checkout.success');
+    }
+
+    public function success(Request $request)
+    {
+        $orderId = $request->session()->get('last_order_id');
+        if (!$orderId) {
+            return redirect()->route('home');
+        }
+
+        $order = Order::with('orderItems')->find($orderId);
+        if (!$order) {
+            return redirect()->route('home');
+        }
+
+        return view('checkout-success', compact('order'));
     }
 
     private function getCartItems(Request $request)

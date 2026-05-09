@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Admin\AdminProductController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -31,6 +32,7 @@ Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.rem
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
 // Auth
 Route::middleware('guest')->group(function () {
@@ -41,3 +43,13 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+// Admin
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('admin.products.index');
+    })->name('dashboard');
+
+    Route::resource('products', AdminProductController::class);
+});
+

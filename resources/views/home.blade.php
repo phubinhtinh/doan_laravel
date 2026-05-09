@@ -5,26 +5,64 @@
 
 @section('content')
 {{-- Hero Section --}}
-<section class="relative min-h-screen flex items-center overflow-hidden bg-surface-container-low -mt-24">
-    <div class="absolute inset-0 z-0">
-        <img alt="High fashion editorial" class="w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2500&auto=format&fit=crop"/>
+<section id="hero-section" class="relative min-h-screen flex items-center overflow-hidden bg-surface-container-low -mt-24">
+    {{-- Slideshow: multiple fashion model images --}}
+    <div class="hero-slideshow absolute inset-0 z-0" id="hero-slideshow">
+        <img alt="Fashion model 1" class="hero-slide active"
+             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2500&auto=format&fit=crop"/>
+        <img alt="Fashion model 2" class="hero-slide"
+             src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2500&auto=format&fit=crop"/>
+        <img alt="Fashion model 3" class="hero-slide"
+             src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2500&auto=format&fit=crop"/>
+        <img alt="Fashion model 4" class="hero-slide"
+             src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?q=80&w=2500&auto=format&fit=crop"/>
+        <img alt="Fashion model 5" class="hero-slide"
+             src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=2500&auto=format&fit=crop"/>
     </div>
+
+    {{-- Gradient overlay --}}
+    <div class="hero-gradient-overlay"></div>
+
+    {{-- Slide progress bar --}}
+    <div class="hero-progress" id="hero-progress">
+        <div class="hero-progress-bar" id="hero-progress-bar"></div>
+    </div>
+
+    {{-- Content --}}
     <div class="relative z-10 w-full max-w-[1920px] mx-auto px-8 md:px-16 lg:px-24">
         <div class="max-w-4xl">
-            <h1 class="font-headline text-6xl md:text-8xl lg:text-9xl text-on-surface leading-tight tracking-tight mb-8">
-                The New <br/><span class="italic font-light">Ethereal</span>
+            <h1 class="font-headline text-6xl md:text-8xl lg:text-9xl text-on-primary leading-tight tracking-tight mb-8">
+                <span class="hero-reveal hero-reveal-d1 block">The New</span>
+                <span class="hero-reveal hero-reveal-d2 block italic font-light"><span class="hero-ethereal">Ethereal</span></span>
             </h1>
             <div class="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
-                <p class="font-body text-lg md:text-xl text-secondary max-w-sm leading-relaxed">
+                <p class="font-body text-lg md:text-xl text-on-primary/80 max-w-sm leading-relaxed hero-reveal hero-reveal-d3">
                     A curated dialogue between structure and fluidity. Exploring the boundaries of contemporary tailoring for the modern soul.
                 </p>
-                <a class="inline-flex items-center group" href="{{ route('products.catalog') }}">
-                    <div class="h-16 w-16 md:h-20 md:w-20 rounded-full border border-outline-variant flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
-                        <span class="material-symbols-outlined group-hover:text-on-primary transition-colors duration-500">arrow_downward</span>
+                <a class="inline-flex items-center group hero-reveal hero-reveal-d4" href="{{ route('products.catalog') }}">
+                    <div class="h-16 w-16 md:h-20 md:w-20 rounded-full border border-on-primary/30 flex items-center justify-center group-hover:bg-on-primary group-hover:border-on-primary transition-all duration-500 hero-cta-glow">
+                        <span class="material-symbols-outlined text-on-primary group-hover:text-primary transition-colors duration-500">arrow_downward</span>
                     </div>
-                    <span class="ml-6 font-label text-sm uppercase tracking-[0.3em] font-medium text-primary">Explore Series 04</span>
+                    <span class="ml-6 font-label text-sm uppercase tracking-[0.3em] font-medium text-on-primary/90">Explore Series 04</span>
                 </a>
             </div>
+        </div>
+    </div>
+
+    {{-- Slide counter --}}
+    <div class="absolute bottom-8 right-8 md:right-16 lg:right-24 z-10 hero-reveal hero-reveal-d4">
+        <div class="flex items-center gap-3">
+            <span class="font-label text-2xl text-on-primary/90 font-light" id="hero-slide-current">01</span>
+            <span class="w-8 h-[1px] bg-on-primary/40"></span>
+            <span class="font-label text-sm text-on-primary/50" id="hero-slide-total">05</span>
+        </div>
+    </div>
+
+    {{-- Scroll indicator --}}
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hero-reveal hero-reveal-d4">
+        <div class="hero-scroll-indicator flex flex-col items-center gap-2 opacity-60">
+            <span class="font-label text-[10px] uppercase tracking-[0.3em] text-on-primary/70">Scroll</span>
+            <span class="material-symbols-outlined text-on-primary/70 text-lg">expand_more</span>
         </div>
     </div>
 </section>

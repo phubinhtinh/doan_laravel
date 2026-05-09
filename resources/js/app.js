@@ -84,6 +84,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    // Hero Image Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const progressBar = document.getElementById('hero-progress-bar');
+    const slideCurrent = document.getElementById('hero-slide-current');
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    const SLIDE_DURATION = 5000; // 5 seconds per slide
+
+    if (slides.length > 1) {
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            // Mark outgoing slide
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('leaving');
+            const outgoing = slides[currentSlide];
+            setTimeout(() => outgoing.classList.remove('leaving'), 1200);
+
+            // Activate next slide
+            currentSlide = index % slides.length;
+            slides[currentSlide].classList.add('active');
+
+            // Update counter
+            if (slideCurrent) {
+                slideCurrent.textContent = String(currentSlide + 1).padStart(2, '0');
+            }
+
+            // Restart progress bar animation
+            if (progressBar) {
+                progressBar.style.animation = 'none';
+                progressBar.offsetHeight; // force reflow
+                progressBar.style.animation = `progressFill ${SLIDE_DURATION}ms linear forwards`;
+            }
+        }
+
+        // Auto-advance
+        setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, SLIDE_DURATION);
+    }
+
+    // Fade scroll indicator on scroll
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            const opacity = Math.max(0, 1 - window.scrollY / 200);
+            scrollIndicator.style.opacity = String(opacity * 0.6);
+        }, { passive: true });
+    }
+
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
