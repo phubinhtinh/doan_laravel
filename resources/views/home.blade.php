@@ -77,7 +77,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
             <a href="{{ route('products.catalog') }}" class="md:col-span-7 lg:col-span-8 group cursor-pointer" data-animate>
                 <div class="relative aspect-[4/5] md:aspect-[16/9] overflow-hidden bg-surface-variant">
-                    <img alt="Minimalist dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1LUbSpXxyOMhdpy_5FbO35LW94xV_T6K1M3FoSfwKmRrCd9WioAZOTk-vuJZh4dZeyQlgnRp1zb0f14NXUMyJ5m0na2oJ_fSJEuJKBEAMGS5-GKctTuJbg3P_eyPBw5CVCO5YkLbhDbQFA2V2YUQ1pVhYYxBeGOfa1Lz_BAq0j8ww1CizWHnaQCekzl27x6bbcBVFlSygSzQfPEsSX93aHZP0oRBHnBddeM89CfWQfKap-ERmdaH7JP47RinWOi9IrTro8DK4yJV7"/>
+                    <img alt="Minimalist dress" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" src="https://kenh14cdn.com/203336854389633024/2024/9/3/photo-4-1693026324700850122353-16521086-1725327370241-17253273705101390869764.jpg"/>
                     <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12">
                         <span class="block font-label text-xs uppercase tracking-widest text-on-primary mb-2 opacity-80">Collection 01</span>
                         <h3 class="font-headline text-3xl md:text-4xl text-on-primary">Monochrome Essence</h3>
@@ -86,7 +86,7 @@
             </a>
             <a href="{{ route('products.catalog') }}" class="md:col-span-5 lg:col-span-4 group cursor-pointer mt-12 md:mt-24" data-animate>
                 <div class="relative aspect-[3/4] overflow-hidden bg-surface-variant">
-                    <img alt="Fashion accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrM0z-HtVJe2gs7wpgGiaQf_mbLWbw568qGeO-mXpKQfQJcPpsSEtxlsF0N5oxDWbtWcX1CHyM6_Md1b65R9UAyI3rOeW4BUszwgZBO1bl00CUvHpjeIWIQ9zQHrUgiISvQJimInmPHhlZFiZp3TJWbsjONAVd5qrzQgTeR9Gqg5VPFbMHK-ROuSIuYzpMrVRVlXDSYv86hVqCDmGB7E9gc7QPsoiYeFNALlNBXWb1e6-3hTfZvdYTh4RCp4SKbJSPQaXqqpNCJo3s"/>
+                    <img alt="Fashion accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://studiochupanhdep.com/Upload/Images/Album/anh-nu-mac-vest-02.jpg"/>
                 </div>
                 <div class="mt-6">
                     <h3 class="font-headline text-2xl text-on-background">The Accessory Edit</h3>
@@ -95,7 +95,7 @@
             </a>
             <a href="{{ route('products.catalog') }}" class="md:col-span-6 lg:col-span-4 group cursor-pointer" data-animate>
                 <div class="relative aspect-square overflow-hidden bg-surface-variant">
-                    <img alt="Textured fabrics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlDi3DRpMmLBWM917aiHSogD7fU0pCFw8siGZndtom1mynDbLUoQMUw5Xu3wwR-HLikyKtvtjbGcw1-bSBONRylMLZWIsXHDo0fYFH5stCSn00dfuhtyGZW_nugZcZjr7vZty8z3a_qSJY-n9AZkv_qC0GbYbOt1bPQpAUqxPmTX3OpF200H1nvzzx3RQrLU9nqu1xhIMrDCXYFP8X_6O76Fwb594twCnvgfpSJIz8EiygJk0grGqHSMBlCdwacOuq46UU0iE2FKDz"/>
+                    <img alt="Textured fabrics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://icdn.24h.com.vn/upload/2-2023/images/2023-04-03/Khao-gia-cat-xe-cua-nhung-linh-truong-davika-viet-nam-va-nhung-phat-hien-moi-1680514037-203-width900height1125.jpg"/>
                 </div>
                 <div class="mt-6">
                     <h3 class="font-headline text-2xl text-on-background">Tactile Materials</h3>
@@ -104,7 +104,7 @@
             </a>
             <a href="{{ route('products.catalog') }}" class="md:col-span-6 lg:col-span-8 group cursor-pointer md:-mt-24 lg:-mt-32" data-animate>
                 <div class="relative aspect-[3/2] overflow-hidden bg-surface-variant">
-                    <img alt="Modern atelier" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8SFrwt9a-ZqZ0y4dG_yxf6XzQuDQs6o_1Uj3p63lu5puoqyktMC4N22e4Jxgi723-xEOjpkKZf9lTlwhnHLBEpF-JkhWzxn_rUJxmK-M4IOwBl2WYcdEtX4_VkVSufYM_oGJnrPCSU1-ryNUgp_BsXBFF4BSDs7wNcC3m0kx1ZKCUf1Nw9uGN9i7xy1qIe082aivuHsySuRoo9sZCOkgH3RFLCOoscd25HEzEyTw94PUv0qyFCssPVo-DSN0PJMBLxYs_RX6V355W"/>
+                    <img alt="Modern atelier" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://cdn-media.sforum.vn/storage/app/media/anh-nguoi-mau-thumb.jpg"/>
                 </div>
                 <div class="mt-6 md:text-right">
                     <h3 class="font-headline text-2xl text-on-background">Runway Archive</h3>

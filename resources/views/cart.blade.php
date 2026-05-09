@@ -38,22 +38,12 @@
                         </div>
                     </div>
                     <div class="flex justify-between items-end mt-8">
-                        <div class="qty-control flex items-center gap-6 border-b border-outline-variant/30 pb-2">
-                            <form method="POST" action="{{ route('cart.update') }}" class="inline">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="cart_item_id" value="{{ $item->id }}">
-                                <input type="hidden" name="quantity" value="{{ max(1, $item->quantity - 1) }}">
-                                <button type="submit" class="text-secondary hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
-                            </form>
-                            <span class="font-body text-sm font-medium w-4 text-center">{{ str_pad($item->quantity, 2, '0', STR_PAD_LEFT) }}</span>
-                            <form method="POST" action="{{ route('cart.update') }}" class="inline">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="cart_item_id" value="{{ $item->id }}">
-                                <input type="hidden" name="quantity" value="{{ $item->quantity + 1 }}">
-                                <button type="submit" class="text-secondary hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
-                            </form>
+                        <div class="qty-control flex items-center gap-6 border-b border-outline-variant/30 pb-4">
+                            <div class="flex items-center gap-4 bg-surface-variant/50 px-5 py-2">
+                                <span class="font-body text-[10px] uppercase tracking-[0.2em] text-secondary">Số lượng</span>
+                                <span class="w-px h-4 bg-outline-variant/30"></span>
+                                <span class="font-headline text-lg font-medium text-on-surface">{{ str_pad($item->quantity, 2, '0', STR_PAD_LEFT) }}</span>
+                            </div>
                         </div>
                         <form method="POST" action="{{ route('cart.remove') }}">
                             @csrf

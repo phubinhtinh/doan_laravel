@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -46,9 +47,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 
 // Admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', function () {
-        return redirect()->route('admin.products.index');
-    })->name('dashboard');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('products', AdminProductController::class);
 });

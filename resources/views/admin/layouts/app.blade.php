@@ -26,6 +26,12 @@
         <nav class="admin-nav">
             <span class="admin-nav-label">QUẢN LÝ</span>
 
+            <a href="{{ route('admin.dashboard') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>Tổng quan</span>
+            </a>
+
             <a href="{{ route('admin.products.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">inventory_2</span>

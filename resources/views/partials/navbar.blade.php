@@ -40,14 +40,45 @@
                 @endif
             </a>
             @auth
-                <div class="hidden md:flex items-center space-x-4">
-                    <span class="text-sm text-neutral-500 font-body">{{ auth()->user()->name }}</span>
-                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                        <button type="submit" class="hover:opacity-70 transition-opacity duration-500 text-neutral-700" title="Đăng xuất">
-                            <span class="material-symbols-outlined">logout</span>
-                        </button>
-                    </form>
+                <div class="hidden md:flex items-center relative">
+                    @if(auth()->user()->isAdmin())
+                        <div class="relative">
+                            <button type="button" class="cursor-pointer py-2 px-2 flex items-center border-none bg-transparent" onclick="document.getElementById('admin-dropdown').classList.toggle('hidden')">
+                                <span class="text-sm text-neutral-800 font-body font-medium">Admin</span>
+                            </button>
+                            
+                            <div id="admin-dropdown" class="hidden absolute top-[100%] left-1/2 -translate-x-1/2 mt-1 w-32 z-50">
+                                <div class="bg-stone-50/80 backdrop-blur-2xl shadow-md flex flex-col py-1">
+                                    <a href="{{ route('admin.dashboard') }}" class="px-4 py-1.5 text-sm font-body text-neutral-700 hover:bg-stone-200/50 transition-colors text-center">Dashboard</a>
+                                    <form method="POST" action="{{ route('logout') }}" class="w-full m-0 p-0">
+                                        @csrf
+                                        <button type="submit" class="w-full px-4 py-1.5 text-sm font-body text-neutral-700 hover:bg-stone-200/50 transition-colors text-center">Đăng xuất</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {{-- Script to close dropdown when clicking outside --}}
+                        <script>
+                            document.addEventListener('click', function(event) {
+                                var dropdown = document.getElementById('admin-dropdown');
+                                var button = dropdown?.previousElementSibling;
+                                if (dropdown && !dropdown.contains(event.target) && !button.contains(event.target)) {
+                                    dropdown.classList.add('hidden');
+                                }
+                            });
+                        </script>
+                    @else
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm text-neutral-500 font-body">{{ auth()->user()->name }}</span>
+                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                @csrf
+                                <button type="submit" class="hover:opacity-70 transition-opacity duration-500 text-neutral-700" title="Đăng xuất">
+                                    <span class="material-symbols-outlined">logout</span>
+                                </button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
             @else
                 <a href="{{ route('login') }}" class="hover:opacity-70 transition-opacity duration-500 text-neutral-700 hidden md:block">

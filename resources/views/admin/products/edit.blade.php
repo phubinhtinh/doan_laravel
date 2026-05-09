@@ -155,8 +155,7 @@
                 </div>
             </div>
 
-            {{-- Submit --}}
-            <div class="admin-card">
+            {{-- Submit --}}\n            <div class="admin-card">
                 <div class="admin-card-body" style="display: flex; flex-direction: column; gap: 0.75rem;">
                     <button type="submit" class="admin-btn admin-btn-primary admin-btn-full">
                         <span class="material-symbols-outlined">save</span>
@@ -164,8 +163,13 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </form>
 
-            {{-- Delete --}}
+    {{-- Delete -- OUTSIDE the main form to prevent nesting conflict --}}
+    <div class="admin-form-grid" style="margin-top: 0;">
+        <div class="admin-form-main"></div>
+        <div class="admin-form-side">
             <div class="admin-card admin-card-danger">
                 <div class="admin-card-body">
                     <h3 class="admin-danger-title">Xóa sản phẩm</h3>
@@ -181,7 +185,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 @endsection
 
 @push('scripts')

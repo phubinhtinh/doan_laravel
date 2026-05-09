@@ -73,7 +73,20 @@
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <input type="hidden" name="size" id="selected-size" value="{{ $product->size_options[0] ?? '' }}">
                 <input type="hidden" name="color" value="{{ $product->color }}">
-                <input type="hidden" name="quantity" value="1">
+                
+                <div class="flex items-center justify-between mb-6">
+                    <label class="font-body text-xs uppercase tracking-widest text-on-surface">Số lượng</label>
+                    <div class="flex items-center border border-outline-variant/30 h-12 w-32">
+                        <button type="button" class="w-10 h-full flex items-center justify-center text-outline hover:text-primary transition-colors" onclick="this.nextElementSibling.stepDown()">
+                            <span class="material-symbols-outlined text-sm">remove</span>
+                        </button>
+                        <input type="number" name="quantity" value="1" min="1" max="{{ $product->stock > 0 ? $product->stock : 1 }}" class="w-12 h-full bg-transparent text-center font-body text-sm outline-none" style="-moz-appearance: textfield; -webkit-appearance: none; margin: 0;">
+                        <button type="button" class="w-10 h-full flex items-center justify-center text-outline hover:text-primary transition-colors" onclick="this.previousElementSibling.stepUp()">
+                            <span class="material-symbols-outlined text-sm">add</span>
+                        </button>
+                    </div>
+                </div>
+
                 <button type="submit" class="w-full bg-primary text-on-primary py-6 text-sm uppercase tracking-[0.2em] font-medium hover:bg-primary-dim transition-all shadow-xl shadow-primary/10 {{ $product->stock <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $product->stock <= 0 ? 'disabled' : '' }}>
                     {{ $product->stock > 0 ? 'Add to Bag' : 'Out of Stock' }}
                 </button>
