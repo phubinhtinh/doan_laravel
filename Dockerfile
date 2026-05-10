@@ -23,5 +23,9 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 # 5. Cấp quyền
 RUN chown -R www-data:www-data storage bootstrap/cache
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 EXPOSE 80
-CMD php artisan migrate --force && apache2-foreground
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["apache2-foreground"]
