@@ -5,8 +5,8 @@ FROM php:8.3-apache
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions
 
-# 3. Cài các extension cần thiết
-RUN install-php-extensions pdo_mysql gd zip intl bcmath
+# 3. Cài các extension cần thiết (Đã thêm driver PostgreSQL)
+RUN install-php-extensions pdo_mysql pdo_pgsql pgsql gd zip intl bcmath
 
 # 4. Kích hoạt mod_rewrite cho Laravel
 RUN a2enmod rewrite
